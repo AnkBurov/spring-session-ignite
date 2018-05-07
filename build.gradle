@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.12.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.41"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:1.2.41"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: "kotlin"
+apply plugin: "kotlin-spring"
+
+group = 'io.ankburov'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:1.16.20"
+
+    compile "org.springframework.boot:spring-boot-starter",
+            "org.springframework.session:spring-session",
+            "org.apache.ignite:ignite-core:2.4.0"
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test',
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41",
+                "org.jetbrains.kotlin:kotlin-reflect:1.2.41",
+                "org.springframework.boot:spring-boot-starter-web:1.5.12.RELEASE",
+                "org.springframework.boot:spring-boot-starter-security:1.5.12.RELEASE"
+}
