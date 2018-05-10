@@ -1,10 +1,11 @@
 # Spring session ignite #
-[![Build Status](https://travis-ci.org/AnkBurov/spring-session-ignite.svg?branch=master)](https://travis-ci.org/AnkBurov/spring-session-ignite)
+[![Build Status](https://travis-ci.org/AnkBurov/spring-session-ignite.svg?branch=master)](https://travis-ci.org/AnkBurov/spring-session-ignite) [![](https://jitpack.io/v/AnkBurov/spring-session-ignite.svg)](https://jitpack.io/#AnkBurov/spring-session-ignite)
 
 Spring Session Ignite is a Spring Session extension which uses Apache Ignite as a session storage.
 
 ### Usage
 
+* Open jitpack link above and add jitpack repository and spring session ignite dependency in your build file.
 * Add `@EnableIgniteHttpSession` annotation to your Spring Boot application class.
 * Add property **spring.session.ignite.defaultMaxInactiveInterval** to your property configuration. 
 It will set maximum inactive time in seconds for each session. Note that this property only sets DefaultMaxInactiveInterval
