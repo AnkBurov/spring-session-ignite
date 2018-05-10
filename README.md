@@ -1,0 +1,2 @@
+# Spring session ignite #
+[![Build Status](https://travis-ci.org/AnkBurov/spring-session-ignite.svg?branch=master)](https://travis-ci.org/AnkBurov/spring-session-ignite) [![Coverage Status](https://coveralls.io/repos/github/AnkBurov/spring-session-ignite/badge.svg?branch=master&ts=1)](https://coveralls.io/github/AnkBurov/spring-session-ignite?branch=master)
