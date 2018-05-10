@@ -9,7 +9,7 @@ import org.apache.ignite.configuration.IgniteConfiguration
 import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi
 import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 import javax.cache.expiry.AccessedExpiryPolicy
 import javax.cache.expiry.Duration
 
-@TestConfiguration
+@SpringBootApplication
 @EnableIgniteHttpSession
 class TestConfiguration : WebSecurityConfigurerAdapter() {
 

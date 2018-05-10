@@ -8,6 +8,8 @@ import org.apache.ignite.Ignite
 import org.apache.ignite.configuration.CacheConfiguration
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -55,7 +57,15 @@ class SpringSessionIgniteIntegrationTest {
 
         restTemplate.getForEntity("/rest", String::class.java)
                 .ok()
-                .bodyNotNull()
+                .bodyNotNull() == "pong"
+    }
+
+    @Test
+    fun testNotAuthenticated() {
+        val body = restTemplate.getForObject("/rest", String::class.java)
+        assertNotNull(body)
+        assertTrue(body.contains("login"))
+        assertFalse(body.contains("pong"))
     }
 
     /**
