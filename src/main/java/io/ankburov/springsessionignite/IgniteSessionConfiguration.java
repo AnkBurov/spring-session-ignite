@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.ExpiringSession;
 import org.springframework.session.MapSessionRepository;
+import org.springframework.session.SessionRepository;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 
 import java.util.Map;
@@ -24,8 +25,8 @@ public class IgniteSessionConfiguration {
     private Integer maxInactiveInterval;
 
     @Bean
-    public MapSessionRepository sessionRepository(Ignite ignite,
-                                                  CacheConfiguration<String, ExpiringSession> sessionCacheConfiguration) {
+    public SessionRepository sessionRepository(Ignite ignite,
+                                               CacheConfiguration<String, ExpiringSession> sessionCacheConfiguration) {
         IgniteCache<String, ExpiringSession> sessionCache = ignite.getOrCreateCache(sessionCacheConfiguration);
         Map<String, ExpiringSession> mappedSessionCache = new CacheMapAdapter<>(sessionCache);
         MapSessionRepository sessionRepository = new MapSessionRepository(mappedSessionCache);
