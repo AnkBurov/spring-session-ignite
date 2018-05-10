@@ -17,6 +17,9 @@ import java.util.Optional;
 @EnableSpringHttpSession
 public class IgniteSessionConfiguration {
 
+    /**
+     * Max inactive interval in seconds
+     */
     @Value("${spring.session.ignite.defaultMaxInactiveInterval:#{null}}")
     private Integer maxInactiveInterval;
 
