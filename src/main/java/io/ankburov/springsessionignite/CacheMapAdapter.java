@@ -1,6 +1,8 @@
 package io.ankburov.springsessionignite;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import javax.cache.Cache;
 import java.util.AbstractMap;
@@ -11,9 +13,10 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @SuppressWarnings("unchecked")
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class CacheMapAdapter<K, V> implements Map<K, V> {
 
-    private final Cache<K, V> cache;
+    Cache<K, V> cache;
 
     @Override
     public int size() {
