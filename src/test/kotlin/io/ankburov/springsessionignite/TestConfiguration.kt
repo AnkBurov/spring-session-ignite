@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.session.ExpiringSession
+import org.springframework.session.Session
 import java.util.concurrent.TimeUnit
 import javax.cache.expiry.AccessedExpiryPolicy
 import javax.cache.expiry.Duration
@@ -46,8 +46,8 @@ class TestConfiguration : WebSecurityConfigurerAdapter() {
     }
 
     @Bean
-    fun sessionCacheConfiguration(): CacheConfiguration<String, ExpiringSession> {
-        val cacheConfiguration = CacheConfiguration<String, ExpiringSession>()
+    fun sessionCacheConfiguration(): CacheConfiguration<String, Session> {
+        val cacheConfiguration = CacheConfiguration<String, Session>()
         cacheConfiguration.name = "spring-session-ignite"
         cacheConfiguration.cacheMode = CacheMode.REPLICATED
         val expirationFactory = AccessedExpiryPolicy.factoryOf(Duration(TimeUnit.SECONDS, maxInactiveInterval!!.toLong()))
@@ -69,7 +69,7 @@ class TestConfiguration : WebSecurityConfigurerAdapter() {
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
                 .withUser("test")
-                .password("test")
+                .password("{noop}test")
                 .roles("ADMIN")
     }
 }
